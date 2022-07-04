@@ -1,6 +1,6 @@
 using BenchmarkTools
 using LinearAlgebra
-# using plots
+
 
 struct init{T}
     x₀::T
@@ -35,35 +35,10 @@ function fit_lagrange(P::interpol,x::Float64)
     return sum(P.W .* aprox)
 end
 
-# function fit_lagrange(P::interpol,x::LinRange{Float64,Int64})
-#     aprox = Vector{Float64}(undef,P.size_)
-#     y = similar(aprox)
-#     for j in P.size_
-#         for i in 1:P.size_
-#             aprox[i] = prod(x .- deleteat!(P.dados.x₀[1:end],i))
-#         end 
-#     y[j] = sum(P.W .* aprox)
-#     end
-# end
 
-
+#teste
 b = interpol(dados = init{Vector}([1,4,5],[1,2,0]))
-@btime lagrange!(b)
-@btime fit_lagrange(b,2.0)
+@btime lagrange!(b) 
+@btime fit_lagrange(b,2.0) #valor de x na aproximação da interpolação
 
 
-# println(fit_lagrange(b,3.0))
-
-# X = LinRange(-1,1,1000)
-# println(X)
-# Y = 1/(1 .+ X .^ 2)
-# println(typeof(Y))
-# @btime lagrange!(interpol(dados = init(X::LinRange{Float64, Int64}, Y::Transpose{Float64, Vector{Float64}})))
-
-# println(size(Z.W))
-
-
-# inter = fit_lagrange(Z,X)
-# @btime fit_lagrange(Z,X)
-# println(b.dados.x₀)
-# println(b.W)
