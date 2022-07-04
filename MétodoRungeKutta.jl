@@ -16,9 +16,6 @@ Base.@kwdef mutable struct RungeKutta
     yᵢ::Matrix{Float64} = zeros(Float64,2,n+1)
 end
 
-fusedEuler!(xᵢ,yᵢ,h,i,G) = (yᵢ[:,i+1] .= yᵢ[:,i]  .+ h .* G(xᵢ[i],yᵢ[:1,i],yᵢ[:2,i]))
-fusedsecondOrder!(xᵢ,yᵢ,h,i,G) = (yᵢ[:,i+1] .= yᵢ[:,i] .+ (h/2) .* (G(xᵢ[i],yᵢ[:1,i],yᵢ[:2,i]) .+ G(xᵢ[i+1],yᵢ[:1,i+1],yᵢ[:2,i+1])))
-
 function solve!(p::RungeKutta,F)
     G(x,y,z)= [z;F(x,y,z)]
     p.yᵢ[:,1] .= p.y₀
