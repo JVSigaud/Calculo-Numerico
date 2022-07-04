@@ -1,2 +1,2 @@
 # Calculo-Numerico
-Algoritmos usados na disciplina de Cálculo Numérico com o objetivo facilitar reprodução de testes.
+Algoritmos usados na disciplina de Cálculo Numérico com o objetivo facilitar a reprodução de testes.
