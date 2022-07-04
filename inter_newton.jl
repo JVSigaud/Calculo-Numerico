@@ -40,11 +40,16 @@ function fit_newton(Pol::interpol,x::Float64)
     return  Pol.dados.y₀[1] + sum(vec)
 end
 
+
+#Teste
 # b = interpol(dados = init{Vector}([-1,0,1],[2,0,-1]))
 # @btime diff_div!(b)
 # println(b.Diff)
 # @btime fit_newton(b,0.5)
 
+
+
+#Exemplo erro de Runge
 using CairoMakie
 CairoMakie.activate!()
 
@@ -76,7 +81,7 @@ for i in range(4,11,step = 2)
   teste!(test)
 
   # scatterlines!(x₁,y₁; label="spline",color="red")
-  lines!(x₀,test;label = "newton$i")
+  lines!(x₀,test;label = "$i Pontos")
 end
 axislegend("legend")
 current_figure()
