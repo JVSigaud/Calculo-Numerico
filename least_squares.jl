@@ -56,10 +56,8 @@ c = [1.1,1.222,1.373,1.571,1.833,2.200,2.75,3.666,5.5,11.0]
 c= log.(c)
 println(c)
 b = Minimos_quadrados(dados = init{typeof(a),typeof(c)}(a,c),size_g=2)
-
-
-solve!(b)
+solve!(b) #obtenção dos coeficientes
 
 x_fit = collect(range(0,10,length = 10))
-y_fit = fit(b,x_fit)
+y_fit = fit(b,x_fit) #Não rwsolvido para o grau N.
 
