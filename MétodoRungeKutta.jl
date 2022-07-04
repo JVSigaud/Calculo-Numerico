@@ -6,6 +6,7 @@ struct Bound{t}
     limite::t
 end
 
+#Apenas para Runge Kutta de segunda ordem
 Base.@kwdef mutable struct RungeKutta
     bounds::Bound
     y₀::Vector{Float64}
@@ -30,6 +31,8 @@ function solve!(p::RungeKutta,F)
     return nothing
 end
 
+
+#exemplo
 intervalo = (0,10.0)
 H = 0.05
 f(x,y,z) = -(9.81/1)*sin(y)
@@ -37,7 +40,7 @@ y = [π/3,0]
 
 β = RungeKutta(bounds = Bound{typeof(intervalo)}(intervalo),y₀ = y, h = H)
 @btime solve!(β,f)
-max()
+
 
 lines(β.xᵢ,β.yᵢ[1,:]; label="Original", linewidth=2, linestyle=nothing,yticks=range(0,2),
     figure=(; figure_padding=5, resolution=(1080, 800), font="sans",
